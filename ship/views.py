@@ -6,6 +6,8 @@ from django.core.exceptions import ValidationError
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -156,43 +158,34 @@ def checkout(request):
         send_order_confirmation_email(order)
 
         return render(request, 'order_success.html', {'order': order})
-
+        return redirect('index')        
     return render(request, 'checkout.html', {
         'order': order,
         'total_price': order.total_price,
-    })
+    }
+              
+)
     
     
 def send_order_confirmation_email(order):
-    # Prepare the email content
-    
+    # Get order items including product details
+    order_items = order.order_items.all()  # Assuming a related name is set in OrderItem model
+
+    # Render the email template
     subject = f"Order Confirmation - Order #{order.id}"
-    message = f"""
-    Dear {order.user.username},
-
-    Thank you for your order! Here are the details:
-
-    Order ID: {order.id}
-    Total Price:  ₹{order.total_price}
     
-    Ordered Products:
-    """
-
-    products = [item.product for item in order.order_items.all()] 
-  
-    
-    message += "\n\nWe will notify you when your order is shipped."
+    html_message = render_to_string("emails/order_confirmation.html", {"order": order, "order_items": order_items})
+    plain_message = strip_tags(html_message)  # Convert HTML to plain text
 
     # Send the email
     send_mail(
         subject,
-        message,
-        settings.EMAIL_HOST_USER,  # From email (your Gmail address)
-        [order.user.email],  # Recipient email (the user's email)
+        plain_message,
+        settings.EMAIL_HOST_USER,  # From email (your configured email)
+        [order.user.email],  # To user email
+        html_message=html_message,
         fail_silently=False,
     )
-
-
 def products_by_category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     products = shopping.objects.filter(category=category)
@@ -200,3 +193,18 @@ def products_by_category(request, category_id):
         'category': category,
         'products': products
     })
+from django.shortcuts import render, get_object_or_404
+from .models import Order
+
+def track_order(request):
+    order = None
+    order_id = request.GET.get("order_id")
+
+    if order_id:
+        try:
+            order = Order.objects.get(id=order_id)
+            order.progress_value = order.get_progress()  # ✅ Call the correct method name
+        except Order.DoesNotExist:
+            order = None
+
+    return render(request, "track_order.html", {"order": order, "order_id": order_id})

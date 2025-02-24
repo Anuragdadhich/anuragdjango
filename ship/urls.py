@@ -19,5 +19,6 @@ urlpatterns = [
     path('remove/<int:order_item_id>/', views.remove_item, name='remove_item'),
     path('checkout/', views.checkout, name='checkout'),
     path('category/<int:category_id>/', views.products_by_category, name='products_by_category'),
+    path('track_order',views.track_order,name="track_order")
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

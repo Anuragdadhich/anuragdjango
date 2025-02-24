@@ -1,30 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Success</title>
-</head>
+{% extends "base.html" %}
+{% load static %}
+    {% block title %}
+    Order Success
+    {% endblock title %}
+
+    <!-- Bootstrap CSS -->
+     {% block css %}
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <style>
+         body {
+             background-color: #f8f9fa;
+         }
+         .order-container {
+             max-width: 600px;
+             margin: 50px auto;
+             background: white;
+             padding: 20px;
+             border-radius: 10px;
+             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+             text-align: center;
+         }
+         .order-header {
+             color: green;
+             font-size: 50px;
+         }
+         .order-list {
+             text-align: left;
+         }
+         .btn-container {
+             margin-top: 20px;
+         }
+     </style>
+     {% endblock css %}
+   
+{% block body %}
+  
+
 <body>
+
     <div class="container">
-        <h2>Order Completed</h2>
+        <div class="order-container">
+            <span class="order-header">✔</span>
+            <h2>Order Completed</h2>
+            <p class="text-muted">Thank you for your purchase!</p>
 
-        <p>Thank you for your purchase!</p>
-        <p>Order Details:</p>
+            <div class="order-list">
+                <h5>Order Details:</h5>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item"><strong>Order ID:</strong> {{ order.id }}</li>
+                    <li class="list-group-item"><strong>User:</strong> {{ order.user.username }}</li>
+                    <li class="list-group-item"><strong>Total Price:</strong> ₹{{ order.total_price }}</li>
+                    <li class="list-group-item"><strong>Status:</strong> {{ order.status }}</li>
+                </ul>
 
-        <ul>
-            <li>Order ID: {{ order.id }}</li>
-            <li>User: {{ order.user.username }}</li>
-            <li>Total Price: ₹{{ order.total_price }}</li>
-            <li>Status: {{ order.status }}</li>
-        </ul>
+                <h5>Ordered Products:</h5>
+                <ul class="list-group">
+                    {% for product in order.products.all %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>{{ product.name }}</span>
+                            <strong>₹{{ product.price }}</strong>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
 
-        <h3>Ordered Products:</h3>
-        <ul>
-            {% for product in order.products.all %}
-                <li>{{ product.name }} - ₹{{ product.price }}</li>
-            {% endfor %}
-        </ul>
+            <div class="btn-container">
+                <a href="/" class="btn btn-primary">Go to Home</a>
+                <a href="/track_order" class="btn btn-outline-success">Track Order</a>
+            </div>
+        </div>
     </div>
+
+    <!-- Bootstrap JS (Optional for interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
-</html>
+{% endblock body %}

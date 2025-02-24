@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+import uuid
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='userprofile')
@@ -35,10 +36,29 @@ class ShoeSize(models.Model):
         return f"{self.shoe.name} - {self.size}"
 
 class Order(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    STATUS_CHOICES = [
+        ("Pending", "Pending"),
+        ("Processing", "Processing"),
+        ("Shipped", "Shipped"),
+        ("Delivered", "Delivered"),
+    ]
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    status = models.CharField(max_length=50, default="Pending")
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default="Pending")
     created_at = models.DateTimeField(auto_now_add=True)
+
+    
+    
+    def get_progress(self):  # ✅ Rename `progress` to `get_progress`
+        """ Return progress percentage based on status """
+        progress_mapping = {
+            "Pending": 10,
+            "Processing": 40,
+            "Shipped": 70,
+            "Delivered": 100,
+        }
+        return progress_mapping.get(self.status, 10)  # Default to 10% if status is
 
     def update_total_price(self):
         self.total_price = sum(item.product.price * item.quantity for item in self.order_items.all())
@@ -50,6 +70,10 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name="order_items", on_delete=models.CASCADE)
     product = models.ForeignKey(shopping, on_delete=models.CASCADE)
+    sizes = models.CharField(max_length=255, blank=True, null=True) # Comma-separated sizes
+    colors = models.CharField(max_length=255, blank=True, null=True) 
+    sizes = models.CharField(max_length=10)  # Store selected size
+    colors = models.CharField(max_length=20)  # Store selected color
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
