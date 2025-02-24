@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.mains{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(249, 245, 240);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.gender{
+    font-size: 13px;
+    font-weight: 300;
+}
+.gender>h4{
+    font-weight: 500;
+}
+.marqe{
+    width: 100%;
+
+}
+.temp{
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    display: flex;
+    background-color: rgb(197, 201, 205);
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+.container{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cole>a{
+    font-size: 12px;
+    display: flex;
+    color: rgb(27, 26, 26);
+    flex-wrap: nowrap;
+    text-decoration: none;
+}
+
+.cole>a:hover{
+   color: black;
+   font-weight: 550;
+}
+
+.cole{
+    padding-left: 22px;
+    display:flex;
+
+}
+.filter{
+    padding: 5px 14px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 25px;
+}
+.filter:hover{
+    padding: 5px 14px;
+    background-color: rgb(237, 234, 215);
+    color: black;
+    border-radius: 25px;
+    
+}
+.shopping-container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+    gap: 40px;
+  }
+  
+  .shopping-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .shopping-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .shopping-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .shopping-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .shopping-card p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .shopping-card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .shopping-card button:hover {
+    background-color: #0056b3;
+  }
+
+  @media (max-width:700px) {
+    .shopping-container {
+        padding: 25px 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 20px;
+      }
+      
+  }
