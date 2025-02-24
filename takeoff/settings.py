@@ -28,6 +28,9 @@ LOGOUT_REDIRECT_URL = 'login'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-2_gh@$dtazu1udxc%l@r2a=@dg&*e#j83#39p7zxr^$en^*%do'
+CSRF_TRUSTED_ORIGINS = [
+    "https://anuragdjango-production.up.railway.app",  # Replace with your actual Railway domain
+]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
