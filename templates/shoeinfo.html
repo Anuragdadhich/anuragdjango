@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}
+  ShoeInfo
+{% endblock title %}
+{% block body %}
+  
+
+<div>
+    {% load static %}
+
+<div class="container mt-5">
+    <div class="row">
+       
+        <div class="col-md-6">
+            <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}" class="img-fluid">
+        </div>
+
+      
+        <div class="col-md-6">
+                <h1>{{ shoe.name }}</h1>
+                <p class="price">₹{{ shoe.price }}</p>
+                <p class="description">{{ shoe.description }}</p>
+
+                <div class="w-100 d-flex " style="gap: 12px;">
+                <div class="size-options">
+                  <label for="size">Size:</label>
+                  <select id="size" name="size">
+                      {% for size in sizes %}
+                          <option value="{{ size }}">{{ size }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+              
+              <div class="color-options">
+                  <label for="color">Color:</label>
+                  <select id="color" name="color">
+                      {% for color in colors %}
+                          <option value="{{ color }}">{{ color }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+            </div>
+          <div class="button d-flex"  style="justify-content: center; position:relative; top:12px">
+            <button style="background-color: rgb(31, 88, 195); border:0; padding:8px 15px; border-radius:4px">   <a style="color:white; text-decoration:none" href="{% url 'add_to_cart' shoe.pk %}">Buy Now</a></button>
+           
+          </div>
+        </div>
+    </div>
+</div>
+
+  <!-- <div class="container-xl  product-detail" >
+        <div class="row" style="background-color: rgb(193, 213, 247); padding:12px">
+            <div class="col-md-6 product-image">
+                <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}" class="img-fluid">
+            </div>
+            <div class="col-md-6 product-info">
+                <h1>{{ shoe.name }}</h1>
+                <p class="price">${{ shoe.price }}</p>
+                <p class="description">{{ shoe.description }}</p>
+
+                <div class="size-options">
+                  <label for="size">Size:</label>
+                  <select id="size" name="size">
+                      {% for size in sizes %}
+                          <option value="{{ size }}">{{ size }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+              
+              <div class="color-options">
+                  <label for="color">Color:</label>
+                  <select id="color" name="color">
+                      {% for color in colors %}
+                          <option value="{{ color }}">{{ color }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+
+            <button style="background-color: blue; border:0; padding:6px; border-radius:4px">   <a style="color:white; text-decoration:none" href="{% url 'add_to_cart' shoe.pk %}">Buy Now</a></button>
+            </div>
+        </div>
+        <div class="row related-products">
+          <h2>Related Products</h2>
+          {% for related_shoe in related_shoes %}
+            <div class="col-md-3 col-sm-6 mb-4">
+              <img src="{{ related_shoe.image.url }}" alt="{{ related_shoe.name }}" class="img-fluid">
+              <h3>{{ related_shoe.name }}</h3>
+              <p>${{ related_shoe.price }}</p>
+              <a href="{% url 'shoeinfo' related_shoe.id %}" class="btn btn-primary btn-sm">View Details</a>
+            </div>
+          {% endfor %}
+        </div>
+    </div>--> 
+    <div class="container mt-5">
+        <h3 class="mb-3">Related Products</h3>
+        <div class="row row-cols-auto row-cols-md-2 g-4 related-products" style="display:flex;flex-direction: row;">
+            <!-- Product 1 -->
+            <div class="col">
+                <div class="card product-card">
+                    {% for related_shoe in related_shoes %}
+                    
+                      <img src="{{ related_shoe.image.url }}" alt="{{ related_shoe.name }}" class="img-fluid">
+                      <h3>{{ related_shoe.name }}</h3>
+                      <p>₹{{ related_shoe.price }}</p>
+                      <a href="{% url 'shoeinfo' related_shoe.id %}" class="btn btn-primary btn-sm">View Details</a>
+                    
+                  {% endfor %}
+                </div>
+            </div>
+    
+        </div>
+    </div>
+ 
+    
+    
+
+    <script src="https://code.jquery.com/jque ry-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
+{% endblock body %}

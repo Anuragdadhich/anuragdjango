@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}
+  <title>Homepage</title>
+
+  <link rel="stylesheet" href="static/grid2.css">
+{% endblock title %}
+
+{% block body %}
+<div class="mains w-100 h-100 " style="background-color:#e7eaf6">
+  
+
+  <div class="container-fluid py-2">
+
+  <div class="marqe">
+    <div class="temp">
+      {% for category in categories %}
+      <div class="cole">
+        <a href="{% url 'products_by_category' category.id %}">{{ category.name }}</a>
+      </div>
+    
+      {% endfor %}
+    </div>
+   
+   </div>
+  
+</div>
+
+  <div class="shopping-container">
+    <!-- Card 1 -->
+    {% for x in page_obj %}
+  <div class="shopping-card">
+    <img src={{x.image.url}} style="aspect-ratio: 3/2;">
+    <h3>{{x.name}}</h3>
+    <p>₹{{x.price}}</p>
+    
+    <button><a href="{{x.pk}}"  class="text-white">Buy Now</a></button>
+   
+  </div>
+  {% endfor %}
+  
+  </div>
+</div>
+<nav>
+  <ul class="pagination justify-content-center p-2">
+      {% if page_obj.has_previous %}
+          <li class="page-item">
+              <a class="page-link" href="?page=1">First</a>
+          </li>
+          <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          </li>
+      {% endif %}
+
+      <li class="page-item active">
+          <span class="page-link">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      </li>
+
+      {% if page_obj.has_next %}
+          <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+          </li>
+          <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+          </li>
+      {% endif %}
+  </ul>
+</nav>
+{% endblock body %}
+

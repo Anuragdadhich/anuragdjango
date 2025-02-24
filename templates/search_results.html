@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+  Search
+{% endblock title %}
+{% block body %}
+
+    {% if product %}
+    <div class="shopping-container p-4">
+        <!-- Card 1 -->
+      {% for x in product %}
+      <div class="card" style="width: 18rem;">
+        <img src={{x.image.url}} style="aspect-ratio: 3/2; width:18rem">
+        <h3>{{x.name}}</h3>
+        <p>{{x.price}}</p>
+        
+        <button class="bg-black"><a href="{{x.id}}"  class="text-white" style="text-decoration: none;">Buy Now</a></button>
+       
+      </div>
+      {% endfor %}
+      </div>
+{% else %}
+    <p class="text-center text-capitalize p-2 fs-4">No products found for this <span class="fw-bolder">{{ query }}</span> .</p>
+{% endif %}
+
+{% endblock body %}
+
+{% block footer %}
+  
+{% endblock footer %}

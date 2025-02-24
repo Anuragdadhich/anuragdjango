@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+  
+
+<div class="container mt-5">
+    <h2 class="text-center">Checkout Page</h2>
+    <h3>Order Summary</h3>
+
+    {% if order.order_items.all %}
+        {% for item in order.order_items.all %}
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span>{{ item.product.name }} - ₹{{ item.product.price }}</span>
+                <div>
+                    <a href="{% url 'decrease_quantity' item.id %}" class="btn btn-sm btn-outline-secondary">-</a>
+                    <span>{{ item.quantity }}</span>
+                    <a href="{% url 'increase_quantity' item.id %}" class="btn btn-sm btn-outline-secondary">+</a>
+                    <a href="{% url 'remove_item' item.id %}" class="btn btn-sm btn-danger">Remove</a>
+                </div>
+            </div>
+        {% endfor %}
+        <h3>Total Price: ₹{{ order.total_price }}</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success w-100">Proceed to Payment</button>
+        </form>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+
+    {% endblock body %}
+    {% block footer %}
+      
+    {% endblock footer %}

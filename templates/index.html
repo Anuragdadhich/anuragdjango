@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}
+  home page
+{% endblock title %}
+   
+{% block body %}
+  
+
+<body class="w-100 h-100" style="background-color:#e7eaf6">
+    {% load static %}
+  
+    <div id="featuredShoeCarousel" class="carousel slide " data-ride="carousel">
+      <ol class="carousel-indicators">
+          {% for shoe in featured_carousel_shoe %}
+              <li data-target="#featuredShoeCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+          {% endfor %}
+      </ol>
+      <div class="carousel-inner ">
+          {% for shoe in featured_carousel_shoe %}
+              <div class="carousel-item  {% if forloop.first %}active{% endif %}">
+                  <img src="{{ shoe.image.url }}" class="d-block w-100 p-2" alt="{{ shoe.name }}">
+                  <div class="carousel-caption d-none d-md-block">
+                      <h3>{{ shoe.name }}</h3>
+                      <p>{{ shoe.carousel_description }}</p>
+                      <a href="{{shoe.id}}" class="btn btn-primary btn-lg">Buy Now</a>
+                      {% if shoe.exclusive_start_date and shoe.exclusive_end_date %}
+                          <p class="exclusive-dates">Exclusive: {{ shoe.exclusive_start_date|date:"F j" }} - {{ shoe.exclusive_end_date|date:"F j" }}</p>
+                      {% endif %}
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+      <a class="carousel-control-prev" href="#featuredShoeCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#featuredShoeCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+  </div>
+
+<div  style="display:flex; align-items:center; flex-direction:column; background-color:#e7eaf6"  class="w-100 h-100 p-2">
+  <div class="w-auto px-2" style="background-color: rgb(55, 71, 83); color:rgb(245, 245, 245);border-radius:12px">
+    <h2 class="text-center"  >Our Shoes <img src="static/running-shoe.png" alt="" style="width: 42px; height:42px"> </h2>
+  </div>
+  <div class="container shoe-grid" >
+    <div class="row d-flex" style="display:flex;justify-content:center;  gap:2px" >
+        <a class="text-end " href="/grid">View All <i class="fa-solid fa-arrow-right-long"></i></a>
+        {% for shoe in shoes %}
+        <div class="col-md-2 col-sm-6 col-5  shoe-item" style="background-color: rgb(255, 255, 255); gap:12px;">
+            <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}" class="img-fluid">
+            <h3>{{ shoe.name }}</h3>
+            <p> ₹{{ shoe.price }}</p>
+          <a href="{{shoe.id}}">view Details</a>
+        </div>
+        {% endfor %}
+     </div>
+    </div>
+   
+
+<div class="container my-5" style="display: flex; flex-direction:column">
+    <h2 class="text-center fw-bold">What Our Customers Say</h2>
+    <p class="text-center text-muted mb-4">Real reviews from our happy customers</p>
+
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <!-- Testimonial 1 -->
+            <div class="carousel-item active">
+                <div class="testimonial-card">
+                    <img src="static/pexels-conojeghuo-211050.jpg" alt="Customer 1" class="testimonial-img img-fluid" style="width: 62px; height:60px">
+                    <h5>John Doe</h5>
+                    <p class="text-muted">"Amazing quality shoes! Super comfortable and stylish. Will buy again!"</p>
+                    <div class="star-rating">★★★★★</div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="carousel-item">
+                <div class="testimonial-card">
+                    <img src="static/smiling-young-party-girl-wearing-party-hat-pointing-side-isolated-orange-wall.jpg" alt="Customer 2" class="testimonial-img" style="width: 62px; height:60px">
+                    <h5>ST.Admina</h5>
+                    <p class="text-muted">"Great customer service and fast delivery. The shoes fit perfectly!"</p>
+                    <div class="star-rating">★★★★☆</div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="carousel-item">
+                <div class="testimonial-card">
+                    <img src="static/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest.jpg" alt="Customer 3" class="testimonial-img" style="width: 62px; height:60px">
+                    <h5>Michael Lee</h5>
+                    <p class="text-muted">"Top-notch materials and very stylish! Definitely my favorite shoe store."</p>
+                    <div class="star-rating">★★★★★</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+{% endblock body %}

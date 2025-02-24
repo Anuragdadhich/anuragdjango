@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block style %}
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/grid2.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <link rel="stylesheet" href="static/shoeinfo.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  {% endblock style %}
+  <title>Document</title>
+  <style>
+    .testimonial-card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+  }
+  .testimonial-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+  }
+  .star-rating {
+      color: #FFD700;
+  }
+    .carousel-item img {
+        height: 500px; /* Adjust as needed */
+        object-fit: cover;
+    }
+    .shoe-grid .shoe-item {
+        text-align: center;
+        padding: 20px;
+    }
+    .shoe-grid {
+      padding: 20px;
+  }
+  .shoe-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+      transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+  }
+  .shoe-item:hover {
+      transform: translateY(-5px); /* Slightly lift on hover */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  }
+  .shoe-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      aspect-ratio: 1/1; /*force square image*/
+      object-fit: cover;
+  }
+  .shoe-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+  }
+  .shoe-item p {
+      color: #555;
+      margin-bottom: 10px;
+  }
+  .shoe-item .btn {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+  }
+  .product-detail {
+    padding: 50px 0;
+}
+.product-image {
+    text-align: center;
+}
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.product-info {
+    padding-left: 30px;
+}
+.product-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+.product-info .price {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+.product-info .description {
+    margin-bottom: 30px;
+}
+.product-info .size-options, .product-info .color-options {
+    margin-bottom: 20px;
+}
+.product-info .size-options label, .product-info .color-options label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+.product-info .size-options select, .product-info .color-options select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.product-info .add-to-cart {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+}
+
+</style>
+</head>
+<body>
+<div class="main w-100 h-100vh">
+ {% block navbar %}
+   
+ 
+
+  <nav class="navbar w-100 navbar-expand-lg data-bs-target" style="background-color: rgb(239, 243, 247);">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">TAke-OFf</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/grid">Shop</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/checkout">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register"><i class="fa-solid fa-user-pen"></i></a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/profile"><i class="fa-solid fa-user"></i></a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search" method="get" action="{% url 'search_products' %}">
+          <input class="form-control me-2" type="search" name="q" id="search-input" placeholder="Search products...">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+     </div>
+  </nav>
+  {% endblock navbar %}
+  {% block body %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  {% endblock body %}
+  {% block content %}{% endblock content %}
+</div>
+
+  {% block footer %}
+    
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left">
+            <!-- Company Info -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">ShopEasy</h5>
+                <p>Your one-stop shop for all the latest products. Quality and customer satisfaction are our priorities.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Quick Links</h5>
+                <p><a href="#" class="text-white text-decoration-none">Home</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Shop</a></p>
+                <p><a href="#" class="text-white text-decoration-none">About Us</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Contact</a></p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Follow Us</h5>
+                <a href="#" class="btn btn-primary btn-floating m-1"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="btn btn-info btn-floating m-1"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="btn btn-danger btn-floating m-1"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="btn btn-success btn-floating m-1"><i class="fab fa-whatsapp"></i></a>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Contact</h5>
+                <p><i class="fas fa-home mr-3"></i> New Delhi, India</p>
+                <p><i class="fas fa-envelope mr-3"></i> support@shopeasy.com</p>
+                <p><i class="fas fa-phone mr-3"></i> +91 12345 67890</p>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        
+    </div>
+   <hr>
+        <div class="align-items-center">
+            <div class="">
+                <p class="text-center">&copy; 2025 ShopEasy. All Rights Reserved.</p>
+            </div>
+        </div>
+</footer>
+
+<!-- FontAwesome Icons -->
+
+
+   {% endblock footer %}
+
+<script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+</body>
+</html>

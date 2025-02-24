@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+   {% block title %}
+     ProfilePage
+   {% endblock title %} 
+   {% block body %}
+     
+
+<div class="main d-flex p-4 justify-content-center">
+    <div class="card text-center" style="width: 18rem;">
+        <img src="{{profile.profile_image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{profile.name}}</h5>
+          <p class="card-text">{{profile.bio}}</p>
+          <p>{{profile.email}}</p>
+        </div>
+       <div class="fle d-flex justify-content-between p-4">
+        <a href="{% url 'updateprofile' %}">update user profile</a>
+        <a href="{% url 'logout' %}">Logout</a>
+       </div>
+      </div>
+<div>
+
+</div>
+{% endblock body %}
+{% block footer %}
+  
+{% endblock footer %}
