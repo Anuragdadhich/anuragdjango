@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-2_gh@$dtazu1udxc%l@r2a=@dg&*e#j83#39p7zxr^$en^*%do
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 CSRF_TRUSTED_ORIGINS = [
     "https://takeof.up.railway.app",  # Replace with your actual Railway domain
 ]
