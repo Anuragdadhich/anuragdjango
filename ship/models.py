@@ -48,17 +48,6 @@ class Order(models.Model):
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default="Pending")
     created_at = models.DateTimeField(auto_now_add=True)
 
-    
-    
-    def get_progress(self):  # ✅ Rename `progress` to `get_progress`
-        """ Return progress percentage based on status """
-        progress_mapping = {
-            "Pending": 10,
-            "Processing": 40,
-            "Shipped": 70,
-            "Delivered": 100,
-        }
-        return progress_mapping.get(self.status, 10)  # Default to 10% if status is
 
     def update_total_price(self):
         self.total_price = sum(item.product.price * item.quantity for item in self.order_items.all())

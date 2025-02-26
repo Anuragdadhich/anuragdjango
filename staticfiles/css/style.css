@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 *{
     margin:0;
@@ -231,5 +229,5 @@ html,body{
   display: none;
 }
 #stuck{
-  background-color: rgb(235, 236, 239);
+  background-color: rgb(255, 255, 255);
 }

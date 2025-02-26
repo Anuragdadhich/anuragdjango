@@ -7,7 +7,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 100%;
     height: 100%;
-    background-color: rgb(249, 245, 240);
+   
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .gender{
@@ -26,7 +26,7 @@
     height: auto;
     overflow-x: auto;
     display: flex;
-    background-color: rgb(197, 201, 205);
+   
     align-items: center;
     padding: 10px;
     justify-content: space-between;

@@ -48,10 +48,7 @@
                     <li class="list-group-item"><strong>Status:</strong> {{ order.status }}</li>
                 </ul>
 
-                <h5>Order Progress:</h5>
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ order.progress }}%;" aria-valuenow="{{ order.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+              
             {% elif order_id %}
                 <div class="alert alert-danger">No order found with ID: {{ order_id }}</div>
             {% endif %}

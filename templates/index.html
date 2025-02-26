@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}
   TakeOFf
 {% endblock title %}
@@ -6,19 +7,18 @@
 {% block body %}
   
 
-<body class="w-100 h-100" style="background-color:#e7eaf6">
-    {% load static %}
-  
+
+<div class="w-100 h-100" style="background-color:#f0ece2">
     <div id="featuredShoeCarousel" class="carousel slide " data-ride="carousel">
       <ol class="carousel-indicators">
           {% for shoe in featured_carousel_shoe %}
               <li data-target="#featuredShoeCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
           {% endfor %}
       </ol>
-      <div class="carousel-inner ">
+      <div class="carousel-inner mt-1">
           {% for shoe in featured_carousel_shoe %}
               <div class="carousel-item  {% if forloop.first %}active{% endif %}">
-                  <img src="{{ shoe.image.url }}" class="d-block w-100 p-2" alt="{{ shoe.name }}">
+                  <img src="{{ shoe.image.url }}" class="d-block w-100" alt="{{ shoe.name }}">
                   <div class="carousel-caption d-none d-md-block">
                       <h3>{{ shoe.name }}</h3>
                       <p>{{ shoe.carousel_description }}</p>
@@ -37,12 +37,12 @@
       <a class="carousel-control-next" href="#featuredShoeCarousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
-      </a>
+        </a>
+        <hr>
   </div>
-
-<div  style="display:flex; align-items:center; flex-direction:column; background-color:#e7eaf6"  class="w-100 h-100 p-2">
-  <div class="w-auto px-2" style="background-color: rgb(55, 71, 83); color:rgb(245, 245, 245);border-radius:12px">
-    <h2 class="text-center"  >Our Shoes <img src="static/running-shoe.png" alt="" style="width: 42px; height:42px"> </h2>
+<div  style="display:flex; align-items:center; flex-direction:column; background-color:#f0ece2"  class="w-100 h-100 p-2">
+  <div class="w-auto px-2 py-2" style="background-color: rgb(213, 129, 110); color:rgb(245, 245, 245);border-radius:12px">
+    <h4 class="text-center"  >Exclusive Shoes 👟 </h4>
   </div>
   <div class="container shoe-grid" >
     <div class="row d-flex" style="display:flex;justify-content:center;  gap:2px" >
@@ -52,14 +52,13 @@
             <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}" class="img-fluid">
             <h3>{{ shoe.name }}</h3>
             <p> ₹{{ shoe.price }}</p>
-          <a href="{{shoe.id}}">view Details</a>
+          <a href="{{shoe.id}}" style="color: #8b5e3b;">View Details</a>
         </div>
         {% endfor %}
      </div>
     </div>
-   
-
-<div class="container my-5" style="display: flex; flex-direction:column">
+    
+<div class="container my-5" style="display: flex; flex-direction:column;" >
     <h2 class="text-center fw-bold">What Our Customers Say</h2>
     <p class="text-center text-muted mb-4">Real reviews from our happy customers</p>
 
@@ -70,7 +69,7 @@
             <div class="carousel-item active">
                 <div class="testimonial-card">
                     <img src="static/pexels-conojeghuo-211050.jpg" alt="Customer 1" class="testimonial-img img-fluid" style="width: 62px; height:60px">
-                    <h5>John Doe</h5>
+                    <h5>W.Alex</h5>
                     <p class="text-muted">"Amazing quality shoes! Super comfortable and stylish. Will buy again!"</p>
                     <div class="star-rating">★★★★★</div>
                 </div>
@@ -108,12 +107,8 @@
     </div>
 </div>
 </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+   
+</div>
 
 
 {% endblock body %}

@@ -82,7 +82,7 @@ def index(request):
   
 def grid(request): 
     products = shopping.objects.all()
-    paginator = Paginator(products, 9)  # Show 10 products per page
+    paginator = Paginator(products, 10)  # Show 10 products per page
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -203,7 +203,7 @@ def track_order(request):
     if order_id:
         try:
             order = Order.objects.get(id=order_id)
-            order.progress_value = order.get_progress()  # ✅ Call the correct method name
+             # ✅ Call the correct method name
         except Order.DoesNotExist:
             order = None
 

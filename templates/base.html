@@ -6,16 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% block style %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+
   <link rel="stylesheet" href="{% static 'css/grid.css' %}">
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
   <link rel="stylesheet" href="{% static 'css/shoeinfo.css' %}">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-   {% endblock style %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+  
+  {% endblock style %}
   <title>TakeOFf</title>
 
   <style>
@@ -138,110 +140,106 @@
 
 </style>
 </head>
-<body>
-<div class="main w-100 h-100vh">
- {% block navbar %}
-   
- 
-
-  <nav class="navbar w-100 navbar-expand-lg data-bs-target" style="background-color: rgb(239, 243, 247);">
+<body style="background-color: #f0ece2;">
+<div class="main w-100 h-100vh" >
+{% block navbar %}
+  
+<nav class="navbar navbar-expand-lg" style="background-color: #d3bd9a;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">TakeOFf</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/grid">Shop</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/checkout">Cart</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/track_order"><i class="fa-solid fa-truck-fast"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/register"><i class="fa-solid fa-user-pen"></i></a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/profile"><i class="fa-solid fa-user"></i></a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search" method="get" action="{% url 'search_products' %}">
-          <input class="form-control me-2" type="search" name="q" id="search-input" placeholder="Search products...">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-     </div>
-  </nav>
-  {% endblock navbar %}
-  {% block body %}
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  {% endblock body %}
-  {% block content %}{% endblock content %}
-</div>
+        <!-- Brand -->
+        <a class="navbar-brand text-white fw-bold" href="/">TakeOFf</a>
 
+        <!-- Toggler for Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Items -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav d-flex justify-content-center align-items-center gap-3">
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="/grid">Shop</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="/checkout">Cart 🛒</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="/register">👤 Register</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/profile"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+            <form class="d-flex ms-auto" role="search" method="get" action="{% url 'search_products' %}">
+                <input class="form-control me-2" type="search" name="q" id="search-input" placeholder="Search products...">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+        </div>
+
+        <!-- Search Form (Aligned Right) -->
+        
+    </div>
+</nav>
+
+      {% endblock navbar %}
+      <!-- Bootstrap JavaScript -->
+      
+    </body>
+      
+      <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+       
+  {% block body %}
+  
+  {% endblock body %}
+   
+</div>
   {% block footer %}
     
-  <footer class="bg-dark text-white pt-5 pb-4">
+  <footer class="pt-5 pb-4" style="background-color: #cab18d; color: #3d2b1f;">
     <div class="container text-center text-md-left">
         <div class="row text-center text-md-left">
+            
             <!-- Company Info -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold">ShopEasy</h5>
-                <p>Your one-stop shop for all the latest products. Quality and customer satisfaction are our priorities.</p>
+                <h5 class="text-uppercase mb-4 font-weight-bold">TakeOFf</h5>
+                <p>High-quality footwear curated just for you. Your comfort, our priority.</p>
             </div>
 
             <!-- Quick Links -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold">Quick Links</h5>
-                <p><a href="#" class="text-white text-decoration-none">Home</a></p>
-                <p><a href="#" class="text-white text-decoration-none">Shop</a></p>
-                <p><a href="#" class="text-white text-decoration-none">About Us</a></p>
-                <p><a href="#" class="text-white text-decoration-none">Contact</a></p>
+                <p><a href="#" class="text-decoration-none" style="color: #5c3b1e;">Home</a></p>
+                <p><a href="#" class="text-decoration-none" style="color: #5c3b1e;">Shop</a></p>
+                <p><a href="#" class="text-decoration-none" style="color: #5c3b1e;">About Us</a></p>
+                <p><a href="#" class="text-decoration-none" style="color: #5c3b1e;">Contact</a></p>
             </div>
 
             <!-- Social Media -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold">Follow Us</h5>
-                <a href="#" class="btn btn-primary btn-floating m-1"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="btn btn-info btn-floating m-1"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="btn btn-danger btn-floating m-1"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="btn btn-success btn-floating m-1"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="m-1" style="color: #5c3b1e;"><i class="fab fa-facebook-f fa-lg"></i></a>
+                <a href="#" class="m-1" style="color: #5c3b1e;"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="https://www.instagram.com/_anuragdadhich" class="m-1" style="color: #5c3b1e;"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="m-1" style="color: #5c3b1e;"><i class="fab fa-whatsapp fa-lg"></i></a>
             </div>
 
             <!-- Contact Info -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold">Contact</h5>
-                <p><i class="fas fa-home mr-3"></i> New Delhi, India</p>
-                <p><i class="fas fa-envelope mr-3"></i> support@shopeasy.com</p>
-                <p><i class="fas fa-phone mr-3"></i> +91 12345 67890</p>
+                <p><i class="fas fa-home mr-2"></i> Beawar-Rajasthan, ndia</p>
+                <p><i class="fas fa-envelope mr-2"></i> support@stakeoff.com</p>
+                <p><i class="fas fa-phone mr-2"></i> +91 12345 67890</p>
             </div>
         </div>
-
-        <!-- Copyright -->
-        
     </div>
-   <hr>
-        <div class="align-items-center">
-            <div class="">
-                <p class="text-center">&copy; 2025 ShopEasy. All Rights Reserved.</p>
-            </div>
-        </div>
+
+    <hr style="border-color: #5c3b1e;">
+
+    <!-- Copyright -->
+    <div class="text-center">
+        <p>&copy; 2025 TakeOFf. All Rights Reserved.</p>
+    </div>
 </footer>
-
-<!-- FontAwesome Icons -->
-
-
+    
    {% endblock footer %}
 
-<script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
 
+<!---nsfs-043-->
+
+    
 </body>
 </html>
