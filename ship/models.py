@@ -26,8 +26,15 @@ class shopping(models.Model):
     carousel_description = models.TextField(blank=True, null=True)
     exclusive_start_date = models.DateField(blank=True, null=True)
     exclusive_end_date = models.DateField(blank=True, null=True)
+    recommended_shoes = models.ManyToManyField('self', blank=True)  
     def __str__(self):
         return f"{self.name}"
+    def discounted_price(self):
+        """Calculate the price after discount"""
+        if self.discount > 0:
+            return round(self.price - (self.price * self.discount / 100), 2)
+        return self.price  # Return original price if no discount
+
 class ShoeSize(models.Model):
     
     size = models.CharField(max_length=5)  # Example: "US 8", "EU 41", "UK 6"

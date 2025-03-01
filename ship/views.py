@@ -71,13 +71,21 @@ def profile(request):
     return render(request, 'profile.html', {'profile': profile})
 
 # Create your views here.
+
 def index(request):
-    featured_carousel_shoe = shopping.objects.filter(is_featured_carousel=True)[:3]# only one item.
-    shoes = shopping.objects.filter(is_featured_carousel=False).order_by('-id')[:4] # all other shoes.
-   
+    # Get all featured shoes for the carousel
+    featured_carousel_shoe = shopping.objects.filter(is_featured_carousel=True)
+    
+    # Fetch the latest 8 shoes (order first, then slice)
+    shoes = shopping.objects.all().order_by('-id')[:8]  
+    recommended_shoes = shopping.objects.exclude(recommended_shoes=None)[:10]  
+    # Get recommended shoes from the first featured shoe (if available)
+ 
+
     return render(request, 'index.html', {
         'featured_carousel_shoe': featured_carousel_shoe,
         'shoes': shoes,
+        'recommended_shoes': recommended_shoes
     })
   
 def grid(request): 

@@ -35,7 +35,7 @@ DEBUG = True
 CSRF_TRUSTED_ORIGINS = [
     "https://takeof.up.railway.app",  # Replace with your actual Railway domain
 ]
-ALLOWED_HOSTS = ["takeof.up.railway.app",'localhost', '127.0.0.1',]
+ALLOWED_HOSTS = ["takeof.up.railway.app", '127.0.0.1',]
 
 # Application definition
 
