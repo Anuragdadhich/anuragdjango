@@ -1,92 +1,110 @@
 {% extends "base.html" %}
 {% block title %}
-  <h1>LogIN</h1>
+  Login
 {% endblock title %}
-{% block navbar %}
-  
-{% endblock navbar %}
+
 {% block style %}
-  <style>
+<style>
   * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: "Poppins", sans-serif;
   }
   body {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: linear-gradient(135deg, #8bb7f9, #eaf1d5);
+      background: linear-gradient(135deg, #d3bd9a, #f5e1c0); /* Light brown gradient */
   }
   .login-container {
       background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-      width: 300px;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+      width: 20rem;
       text-align: center;
   }
   .login-container h2 {
       margin-bottom: 20px;
-      color: #333;
+      color: #5d4037; /* Brown shade */
+      font-weight: bold;
   }
   .input-group {
       margin-bottom: 15px;
+      text-align: left;
+  }
+  .input-group label {
+      font-weight: 600;
+      display: block;
+      color: #5d4037;
   }
   .input-group input {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: 1px solid #b08968;
+      border-radius: 6px;
       transition: 0.3s;
+      background-color: #f5e1c0;
+      color: #5d4037;
   }
   .input-group input:focus {
-      border-color: #74ebd5;
+      border-color: #8d6e63;
       outline: none;
-      box-shadow: 0 0 5px rgba(116, 235, 213, 0.5);
+      box-shadow: 0 0 5px rgba(141, 110, 99, 0.5);
   }
   .login-btn {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: none;
-      background: #74ebd5;
+      background: #8d6e63;
       color: white;
       font-size: 16px;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
       transition: 0.3s;
+      font-weight: bold;
   }
   .login-btn:hover {
-      background: #5ec3b9;
+      background: #6d4c41;
   }
-  .hell{
-    margin-top: 12px ;
+  .register-link {
+      margin-top: 12px;
+      display: block;
+      font-size: 14px;
+      color: #5d4037;
+      text-decoration: none;
+      font-weight: 600;
+  }
+  .register-link:hover {
+      color: #6d4c41;
   }
 </style>
-  {% endblock style %}
+{% endblock style %}
+{% block navbar %}
+  
+{% endblock navbar %}
 {% block body %}
-
+<div>
 <form method="POST">
   <div class="login-container">
     <h2>Login</h2>
     {% csrf_token %}
-          <div class="input-group">
-              <input type="text" name="username" placeholder="Enter Username" required>
-          </div>
-          <div class="input-group">
-              <input type="password" name="password" placeholder="Enter Password" required>
-          </div>
-          <button type="submit" class="login-btn">Login</button>
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" placeholder="Enter Username" required>
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Enter Password" required>
+    </div>
+    <button type="submit" class="login-btn">Login</button>
+    <a href="{% url 'register' %}" class="register-link">Don't have an account? Register</a>
   </div>
 </form>
-<a class="hell" href="{% url 'register' %}">Don't have an account? Register</a>
-
-
+</div>
 {% endblock body %}
-{% block footer %}
-  
-{% endblock footer %}
 
- 
+{% block footer %}
+{% endblock footer %}

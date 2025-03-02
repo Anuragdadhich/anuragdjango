@@ -102,7 +102,7 @@
       <div class="carousel-inner mt-1">
           {% for shoe in featured_carousel_shoe %}
               <div class="carousel-item  {% if forloop.first %}active{% endif %}">
-                  <img src="{{ shoe.image.url }}" class="d-block w-100" alt="{{ shoe.name }}">
+                  <img src="{{ shoe.image.url }}" loading="lazy" class="d-block w-100" alt="{{ shoe.name }}">
                   <div class="carousel-caption d-none d-md-block">
                       <h3>{{ shoe.name }}</h3>
                       <p>{{ shoe.carousel_description }}</p>
@@ -134,7 +134,7 @@
         {% for shoe in shoes %}
         <div class="shoe-item flex-shrink-0" style="width: 180px; background-color: #fff; padding: 10px; border-radius: 8px; scroll-snap-align: start;">
             
-            <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}" class="img-fluid rounded" style="height: 150px; object-fit: cover;">
+            <img src="{{ shoe.image.url }}" loading="lazy" alt="{{ shoe.name }}" class="img-fluid rounded" style="height: 150px; object-fit: cover;">
             <h6 class="text-center mt-2">{{ shoe.name }}</h6>
             <p class="text-center text-muted mb-1">₹{{ shoe.price }}</p>
             <a href="{{ shoe.id }}" class="d-block text-center" style="color: #8b5e3b; text-decoration: none;">View Details</a>
@@ -151,7 +151,7 @@
 </div>
 
 <div class="hero-banner">
-    <div class="banner-content">
+    <div class="banner-content" loading="lazy">
         <h1>Step Into Comfort & Style</h1>
         <p>Discover the best collection of trendy and comfortable shoes.</p>
         <a href="/grid" class="shop-btn">Shop Now</a>
@@ -168,7 +168,7 @@
             <!-- Testimonial 1 -->
             <div class="carousel-item active">
                 <div class="testimonial-card">
-                    <img src="static/pexels-conojeghuo-211050.jpg" alt="Customer 1" class="testimonial-img img-fluid" style="width: 62px; height:60px">
+                    <img src="static/pexels-conojeghuo-211050.jpg" loading="lazy" alt="Customer 1" class="testimonial-img img-fluid" style="width: 62px; height:60px">
                     <h5>W.Alex</h5>
                     <p class="text-muted">"Amazing quality shoes! Super comfortable and stylish. Will buy again!"</p>
                     <div class="star-rating">★★★★★</div>
@@ -178,7 +178,7 @@
             <!-- Testimonial 2 -->
             <div class="carousel-item">
                 <div class="testimonial-card">
-                    <img src="static/smiling-young-party-girl-wearing-party-hat-pointing-side-isolated-orange-wall.jpg" alt="Customer 2" class="testimonial-img" style="width: 62px; height:60px">
+                    <img src="static/smiling-young-party-girl-wearing-party-hat-pointing-side-isolated-orange-wall.jpg" loading="lazy" alt="Customer 2" class="testimonial-img" style="width: 62px; height:60px">
                     <h5>ST.Admina</h5>
                     <p class="text-muted">"Great customer service and fast delivery. The shoes fit perfectly!"</p>
                     <div class="star-rating">★★★★☆</div>
@@ -188,7 +188,7 @@
             <!-- Testimonial 3 -->
             <div class="carousel-item">
                 <div class="testimonial-card">
-                    <img src="static/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest.jpg" alt="Customer 3" class="testimonial-img" style="width: 62px; height:60px">
+                    <img src="static/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest.jpg" loading="lazy" alt="Customer 3" class="testimonial-img" style="width: 62px; height:60px">
                     <h5>Michael Lee</h5>
                     <p class="text-muted">"Top-notch materials and very stylish! Definitely my favorite shoe store."</p>
                     <div class="star-rating">★★★★★</div>
@@ -214,7 +214,7 @@
     <div class="d-flex overflow-auto pb-3 hide-scrollbar" style="gap: 15px; scroll-snap-type: x mandatory; white-space: nowrap;">
         {% for shoe in recommended_shoes %}
             <div class="card flex-shrink-0" style="width: 14rem; scroll-snap-align: start;">
-                <img src="{{ shoe.image.url }}" class="card-img-top" alt="{{ shoe.name }}" style="height: 180px; object-fit: cover;">
+                <img src="{{ shoe.image.url }}" loading="lazy" class="card-img-top" alt="{{ shoe.name }}" style="height: 180px; object-fit: cover;">
                 <div class="card-body text-center">
                     <h6 class="card-title">{{ shoe.name }}</h6>
                     <p class="card-text">₹{{ shoe.price }}</p>

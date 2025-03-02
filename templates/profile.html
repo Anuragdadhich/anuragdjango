@@ -1,27 +1,37 @@
 {% extends "base.html" %}
-   {% block title %}
-     ProfilePage
-   {% endblock title %} 
-   {% block body %}
-     
+{% block title %}Profile Page{% endblock title %}
 
-<div class="main d-flex p-4 justify-content-center">
-    <div class="card text-center" style="width: 18rem;">
-        <img src="{{profile.profile_image.url}}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{profile.name}}</h5>
-          <p class="card-text">{{profile.bio}}</p>
-          <p>{{profile.email}}</p>
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg border-0" style="max-width: 400px; border-radius: 15px;">
+        
+        <!-- Profile Image -->
+        <div class="text-center">
+            <img src="{{ profile.profile_image.url }}" class="rounded-circle border p-1" 
+                 style="width: 120px; height: 120px; object-fit: cover;" alt="Profile Picture">
         </div>
-       <div class="fle d-flex justify-content-between p-4">
-        <a href="{% url 'updateprofile' %}">update user profile</a>
-        <a href="{% url 'logout' %}">Logout</a>
-       </div>
-      </div>
-<div>
 
+        <!-- User Info -->
+        <div class="card-body text-center">
+            <h3 class="card-title fw-bold">{{ profile.name }}</h3>
+            <p class="text-muted">{{ profile.bio }}</p>
+            <p class="text-dark fw-semibold">{{ profile.email }}</p>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{% url 'updateprofile' %}" class="btn btn-outline-primary w-50 me-2">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </a>
+                <a href="{% url 'logout' %}" class="btn btn-outline-danger w-50 ms-2">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Include FontAwesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 {% endblock body %}
-{% block footer %}
-  
-{% endblock footer %}
+
+{% block footer %}{% endblock footer %}

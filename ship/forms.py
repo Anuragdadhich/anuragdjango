@@ -20,4 +20,12 @@ class UserRegistrationForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['name', 'email', 'profile_image']
+        fields = ['name', 'email', 'profile_image', 'bio', 'address', 'phone']
+        
+    def save(self, commit=True):
+        profile = super().save(commit=False)
+        profile.user.email = self.cleaned_data['email']  # Update user's email
+        if commit:
+            profile.user.save()  # Save user email
+            profile.save()  # Save profile data
+        return profile

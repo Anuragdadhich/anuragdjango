@@ -50,7 +50,7 @@
     <!-- Card 1 -->
     {% for x in page_obj %}
   <div class="shopping-card">
-    <img src={{x.image.url}} style="aspect-ratio: 3/2;">
+    <img src={{x.image.url}} loading="lazy" style="aspect-ratio: 3/2;">
     <h3>{{x.name}}</h3>
     <p>₹{{x.price}}</p>
     

@@ -4,26 +4,28 @@
 {% endblock title %}
 {% block body %}
 
-    {% if product %}
-    <div class="shopping-container p-4">
-        <!-- Card 1 -->
-      {% for x in product %}
-      <div class="card" style="width: 18rem;">
-        <img src={{x.image.url}} style="aspect-ratio: 3/2; width:18rem">
-        <h3>{{x.name}}</h3>
-        <p>{{x.price}}</p>
-        
-        <button class="bg-black"><a href="{{x.id}}"  class="text-white" style="text-decoration: none;">Buy Now</a></button>
-       
-      </div>
-      {% endfor %}
-      </div>
+{% if product %}
+<h4 class="text-center">{{ query }}</h4>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        {% for x in product %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ x.image.url }}" class="card-img-top" style="height: 150px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ x.name }}</h5>
+                    <p class="card-text">₹{{ x.price }}</p>
+                    <a href="{{ x.id }}" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% else %}
-    <p class="text-center text-capitalize p-2 fs-4">No products found for this <span class="fw-bolder">{{ query }}</span> .</p>
+<p class="text-center text-capitalize p-2 fs-4">
+    No products found for this <span class="fw-bolder">{{ query }}</span>.
+</p>
 {% endif %}
 
 {% endblock body %}
-
-{% block footer %}
-  
-{% endblock footer %}

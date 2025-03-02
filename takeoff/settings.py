@@ -38,6 +38,8 @@ CSRF_TRUSTED_ORIGINS = [
 ALLOWED_HOSTS = ["takeof.up.railway.app", '127.0.0.1',]
 
 # Application definition
+RAZORPAY_KEY_ID = "rzp_test_1vNeVxUb3Q2IMU"
+RAZORPAY_KEY_SECRET = "Gm8ctRJ5mxIxpe8ECAzEULSd"
 
 
 INSTALLED_APPS = [

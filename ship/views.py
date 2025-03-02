@@ -50,20 +50,6 @@ def user_logout(request):
     return redirect('login')
 
 
-@login_required
-def updateprofile(request):
-    profile = request.user.userprofile
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
-            return redirect('profile')  # Redirect to the profile page
-    else:
-        form = UserProfileForm(instance=profile)
-
-    return render(request, 'updateprofile.html', {'form': form})
-
-
 
 @login_required
 def profile(request):
@@ -72,13 +58,30 @@ def profile(request):
 
 # Create your views here.
 
+@login_required
+def updateprofile(request):
+    profile = request.user.userprofile  # Get the logged-in user's profile
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your profile has been updated successfully!")
+            return redirect('profile')  # Redirect to profile page
+    else:
+        form = UserProfileForm(instance=profile)
+
+    return render(request, 'updateprofile.html', {'form': form})
+
+
+
 def index(request):
     # Get all featured shoes for the carousel
     featured_carousel_shoe = shopping.objects.filter(is_featured_carousel=True)
     
     # Fetch the latest 8 shoes (order first, then slice)
     shoes = shopping.objects.all().order_by('-id')[:8]  
-    recommended_shoes = shopping.objects.exclude(recommended_shoes=None)[:10]  
+    recommended_shoes =shopping.objects.exclude(recommended_shoes=None)[:10]  
     # Get recommended shoes from the first featured shoe (if available)
  
 

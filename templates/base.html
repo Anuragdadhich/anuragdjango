@@ -20,13 +20,13 @@
   {% endblock style %}
   <title>TakeOFf</title>
 
-  <style>
-   
-
-</style>
+ {% block css %}
+ <style>
+ </style>
+ {% endblock css %}
 </head>
 <body style="background-color: #f0ece2;">
-<div class="main w-100 h-100vh" >
+<div class="main w-100" >
 {% block navbar %}
   
 <nav class="navbar navbar-expand-lg" style="background-color: #d3bd9a;">
@@ -60,16 +60,13 @@
 </nav>
 
       {% endblock navbar %}
-      <!-- Bootstrap JavaScript -->
-      
-    </body>
-      
-      <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-       
+
   {% block body %}
   
   {% endblock body %}
+  
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
    
 </div>
   {% block footer %}
@@ -111,7 +108,7 @@
             </div>
         </div>
     </div>
-
+</div>
     <hr style="border-color: #5c3b1e;">
 
     <!-- Copyright -->
