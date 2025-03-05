@@ -8,7 +8,7 @@ import sys
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='userprofile')
-    profile_image = models.ImageField(upload_to='profile_images/', default='default.jpg')
+    profile_image = models.ImageField(upload_to='profile_image/', default='default.jpg')
     name = models.CharField(max_length=100, blank=True)
     email = models.EmailField(blank=True)
     bio = models.TextField(blank=True, null=True)
