@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+from django.conf import settings
+from django.conf.urls.static import static
 
 BASE_DIR = Path(__file__).resolve().parent.parent  # Ensure BASE_DIR is correct
 
@@ -21,8 +23,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For production
 
 # Media Files (User-uploaded images)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Make sure this directory exists
-
+MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'profile'
@@ -40,7 +41,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://takeof.up.railway.app",  # Replace with your actual Railway domain
 ]
 ALLOWED_HOSTS = ["takeof.up.railway.app", '127.0.0.1','*']
-DEBUG = True
+DEBUG = False
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 
