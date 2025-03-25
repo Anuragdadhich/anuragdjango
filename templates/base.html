@@ -7,7 +7,6 @@
   {% block style %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-  <link rel="stylesheet" href="{% static 'css/grid.css' %}">
   
   <link rel="stylesheet" href="{% static 'css/shoeinfo.css' %}">
   
@@ -50,6 +49,23 @@
         0% { opacity: 0; }
         100% { opacity: 1; }
     }
+    @media (max-width: 991px) {
+        .search-container {
+          width: 100%;
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    
+      /* Large screen (search bar stays in navbar) */
+      @media (min-width: 992px) {
+        .search-container {
+          width: auto;
+          padding: 0;
+          margin-left: auto;
+        }
+      }
  </style>
  {% endblock css %}
 </head>
@@ -61,7 +77,7 @@
 <div class="main w-100" >
 {% block navbar %}
   
-<nav class="navbar navbar-expand-lg position-sticky" style="background-color: #d3bd9a;">
+<nav class="navbar navbar-expand-lg position-sticky" style="background-color: #d5ba92f9;">
     <div class="container-fluid">
         <!-- Brand -->
         <a class="navbar-brand text-white fw-bold" href="/">TakeOFf</a>
@@ -81,17 +97,17 @@
                 <li class="nav-item"><a class="nav-link text-white" href="/profile"><i class="fa-solid fa-user"></i></a></li>
                 <a href="/track_order" class="btn btn-outline-success">📦</a>
             </ul>
-            <form class="d-flex ms-auto" role="search" method="get" action="{% url 'search_products' %}">
-                <input class="form-control me-2" type="search" name="q" id="search-input" placeholder="Search products...">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
         </div>
+    </div>
 
-        <!-- Search Form (Aligned Right) -->
-        
+    <!-- Search Form (Moves Below Navbar on Small Screens) -->
+    <div class="search-container d-lg-block d-flex justify-content-center w-100">
+        <form class="d-flex" role="search" method="get" action="{% url 'search_products' %}">
+            <input class="form-control me-2" type="search" name="q" id="search-input" placeholder="Search products...">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
     </div>
 </nav>
-
       {% endblock navbar %}
 
   {% block body %}

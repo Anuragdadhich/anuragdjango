@@ -1,14 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Profile Page{% endblock title %}
-
 {% block body %}
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow-lg border-0" style="max-width: 400px; border-radius: 15px;">
         
         <!-- Profile Image -->
         <div class="text-center">
-            <img src="{{ profile.profile_image.url }}" class="rounded-circle border p-1" 
-                 style="width: 120px; height: 120px; object-fit: cover;" alt="Profile Picture">
+       <img src="{{ profile.profile_image.url }}" class="rounded-circle border p-1" 
+       style="width: 120px; height: 120px; object-fit: cover;" alt="Profile Picture">
         </div>
 
         <!-- User Info -->

@@ -10,8 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent  # Ensure BASE_DIR is correct
+
+# Static Files (CSS, JS, etc.)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For production
+
+# Media Files (User-uploaded images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Make sure this directory exists
 
 
 LOGIN_URL = 'login'
@@ -25,17 +35,14 @@ SECRET_KEY = 'django-insecure-2_gh@$dtazu1udxc%l@r2a=@dg&*e#j83#39p7zxr^$en^*%do
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 CSRF_TRUSTED_ORIGINS = [
     "https://takeof.up.railway.app",  # Replace with your actual Railway domain
 ]
-ALLOWED_HOSTS = ["takeof.up.railway.app", '127.0.0.1',]
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+ALLOWED_HOSTS = ["takeof.up.railway.app", '127.0.0.1','*']
+DEBUG = True
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
-MEDIA_URL = '/media/'  # Public URL for accessing media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
 
 # Application definition
 RAZORPAY_KEY_ID = "rzp_test_1vNeVxUb3Q2IMU"
@@ -43,8 +50,8 @@ RAZORPAY_KEY_SECRET = "Gm8ctRJ5mxIxpe8ECAzEULSd"
 
 
 INSTALLED_APPS = [
-    'jazzmin',  # NEW Jet Reboot
     'django.contrib.admin',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -130,12 +137,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

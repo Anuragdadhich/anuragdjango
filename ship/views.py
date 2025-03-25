@@ -12,7 +12,7 @@ from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import UserRegistrationForm,UserProfileForm
+from .forms import UserRegistrationForm
 from .models import UserProfile,Order
 from .forms import UserProfileForm
 
