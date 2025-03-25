@@ -40,7 +40,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://takeof.up.railway.app",  # Replace with your actual Railway domain
 ]
 ALLOWED_HOSTS = ["takeof.up.railway.app", '127.0.0.1','*']
-DEBUG = True
+DEBUG = False
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 
