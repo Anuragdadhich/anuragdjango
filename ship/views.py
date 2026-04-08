@@ -157,26 +157,24 @@ def remove_item(request, order_item_id):
  #   return render(request, 'cart_detail.html', {'cart': cart, 'total_price': total_price})
 @login_required
 def checkout(request):
-    # Get or create an order for the logged-in user
     order, created = Order.objects.get_or_create(user=request.user, status="Pending")
 
     if request.method == "POST":
-        # If checkout is confirmed, finalize the order
         order.status = "Confirmed"
         order.save()
 
-        # Send confirmation email (optional)
-        send_order_confirmation_email(order)
+        # ✅ Safe email sending
+        try:
+            send_order_confirmation_email(order)
+        except Exception as e:
+            print("Email failed:", e)
 
         return render(request, 'order_success.html', {'order': order})
-        return redirect('index')        
+
     return render(request, 'checkout.html', {
         'order': order,
         'total_price': order.total_price,
-    }
-              
-)
-    
+    })    
     
 def send_order_confirmation_email(order):
     # Get order items including product details
